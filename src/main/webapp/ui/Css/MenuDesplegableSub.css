@@ -1,0 +1,301 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 15/10/2017, 01:30:56 PM
+    Author     : Mario-Bx
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/***Margen****/
+#Centrar {
+    width: 100%;
+}
+#Telon {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    margin-bottom: 50PX;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+header {
+    width: 100%;
+    height: 150px; /*Le damos un alto fijo al menu*/
+    margin-top:10px; /*Simplemente agregamos un margen*/
+    overflow: hidden; /*Agregamos un overflow hidden para que no se muestren elementos que sobrepasen los 150px de alto*/
+    position: relative; /*Convertimos el menu en posición relativa porque mas adelante en el header > nav pondremos una posición absoluta*/
+}
+
+.Menu{
+    width: 100%;
+    height: 180px;
+    z-index: 1000;
+    /*	position: fixed;
+            left: 0;
+            right: 0;*/
+}
+
+#btn_Menu{
+    display: none;
+}
+
+header label {
+    display: none;
+    width: fit-content;
+    /*se ajusta al tamaño del contenido*/
+}
+
+header label:hover{/*seleciona el effecto al pasar el cursor*/
+    cursor: pointer;
+    background: rgba(0,0,0,.3);
+}
+
+/*Crear menu*/
+nav {    
+    top:-20px; /*Le damos una separación superior*/
+    width:100%;
+    margin:20px auto;
+    position: relative; /*Convertimos el contenedor en posición absoluta*/
+}
+
+/*modificamos la etiqueta de la lista donde empoeza el menu*/
+nav ul{
+    list-style: none;
+}
+
+
+/*Se aplican cambios "ul" directamente a los que estan despues del "nav"*/
+nav > ul {
+    width:100%;
+    display:table;
+    background:#000;   
+    position: relative;/*//sirve para el menu desplegable*/
+}
+
+nav > ul li{
+    display: table-cell; /*//para que los elementos li se pongan un elemento al dao del otro*/
+}
+
+/*//buque a los nav, luego a ul, li, ul, decendencia continua
+escondemos los ultimos ul*/ 
+nav > ul > li > ul{
+    display: none;
+} 
+
+/*Todlos elementos "a" del menu*/
+/*.Menu_Des a{*/
+nav > ul li a{ 
+    color: #fff;
+    padding: 20px; /*auasta el tamaño alto del menu*/
+
+    display: block; /*nos permite poder cambiar el ancho y el alto*/
+    line-height: 20px;
+    position: relative;
+    text-align: center; /*Centramos el Texto*/
+    text-decoration: none;
+    border-right: 2px solid rgba(255,255,255,.3);
+    border-bottom: 2px solid rgba(255,255,255,.3);
+    /*efecto de tansicion en el tiempo*/
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+/*efecto de trancicion a los elelementos hijo*/
+ul li a:hover{
+    background: #00ccff;
+}
+
+/*ESCONDER LAS IMAGENES
+se aplican al "span" seguido de a, li, ul, nav*/
+
+nav > ul > li > a span {
+    background: #00ccff;   
+    display: block;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    top:-55px;
+    -webkit-transition: all .9s ease;
+    -moz-transition: all .9s ease;
+    -ms-transition: all .9s ease;
+    -o-transition: all .9s ease;
+    transition: all .9s ease;
+}
+
+nav > ul > li > a span img{
+    display: block;
+    line-height: 60px;
+}
+
+.icon{
+    /*se re ajusta el tamaño de la imagen*/
+    height: 40px;
+    margin: 10px auto;
+}
+
+/*despliegues de las imagenes
+se da el efecto estrictamente al "span" cuando se pase por a*/
+nav > ul > li > a:hover > span{
+    top: 0;
+}
+
+/*color de cuadro de imagenes*/
+
+.uno{
+    background: #66ffff;
+}
+.dos{
+    background: #ff0033;
+}
+.tres{
+    background: #0ec54f;
+}
+.cuatro{
+    background: #08a6f2;
+}
+
+/*SubMenu*/
+nav > ul > li:hover > ul {
+    display:block;
+    height:100%;
+}
+
+nav > ul > li > ul {
+    display:block;
+    position:absolute;
+    background:#000;
+    left:0;
+    right:0;
+    overflow:hidden;
+    height:0%;
+    -webkit-transition: all .8s ease;
+    -moz-transition: all .8s ease;
+    -ms-transition: all .8s ease;
+    -o-transition: all .8s ease;
+    transition: all .8s ease;
+}
+
+/*efecto del menu adaptado*/
+
+
+/*sirve para modificar los atrivutos cuadno se cumple alguna condicion*/
+@media screen and (max-width: 500px){
+    .Contenedor{
+        width: 100%;     
+    }
+
+    .ContenedorMenu{
+        display: block;
+        width: fit-content;
+        /*se ajusta al tamaño del contenido*/
+    }
+
+    header{
+        position: static    ;
+    }
+
+    header label {
+        display: block;
+        width: fit-content;
+        /*se ajusta al tamaño del contenido*/
+    }
+
+    .MenuCss {
+        position: absolute;
+        width: 20%;
+        margin-left: -100%;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    .MenuCss li{
+        display: inline;   
+    }   
+
+    #btn_Menu:checked ~ .MenuCss{
+        margin: 0;
+        margin-top: 22%;
+        -webkit-transition: all .5s ease;
+        -moz-transition: all .5s ease;
+        -ms-transition: all .5s ease;
+        -o-transition: all .5s ease;
+        transition: all .5s ease;
+    }
+
+    .MenuCss a:hover{
+        cursor: pointer;
+        background:aqua;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+    /*ESCONDER LAS IMAGENES
+se aplican al "span" seguido de a, li, ul, nav*/
+
+    nav > ul > li > a span {
+        background: #00ccff;   
+        display: block;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        position: absolute;
+        left: -95%;/*corre a la izquierda la imagen*/
+        border-right: 2px solid rgba(255,255,255,.3);
+        border-top: 2px solid rgba(255,255,255,.3);
+        -webkit-transition: all .9s ease;
+        -moz-transition: all .9s ease;
+        -ms-transition: all .9s ease;
+        -o-transition: all .9s ease;
+        transition: all .9s ease;
+    }
+
+    nav > ul > li > a span img{
+        display: block;
+        line-height: 50px;
+    }
+
+    /*alinia la imagen*/
+    /*despliegues de las imagenes
+se da el efecto estrictamente al "span" cuando se pase por a*/
+    nav > ul > li > a:hover > span{
+        left: 0;
+    }
+
+    /*SubMenu*/
+    nav > ul > li:hover > ul {
+        display:block;
+        width:100%;
+    }
+
+    nav > ul > li > ul {
+        left: 100%;
+        display:block;
+        position:absolute;
+        background:#000;
+        overflow:hidden;
+        width:0%;
+        -webkit-transition: all .8s ease;
+        -moz-transition: all .8s ease;
+        -ms-transition: all .8s ease;
+        -o-transition: all .8s ease;
+        transition: all .8s ease;
+    }
+}
