@@ -32,11 +32,39 @@ public class ArtistaDao {
         try {
             /// sentencia para insertar en la tabla
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("insert into ClienteBD(Nombre) values (?)");
+                    .prepareStatement("insert into ArtistasBD(Nombre) values (?)");
             // parametros de inicio para agregar...
-            preparedStatement.setString(2, newclArturoJc.getNombre());
+            preparedStatement.setString(1, newclArturoJc.getNombre());
             preparedStatement.executeUpdate();
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteTabla(int TablaDl) {
+        try {
+            System.out.println("Entro a eliminar");
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("delete from ArtistasBD where ID_Artistas=?");
+            // Parameters start with 1
+            preparedStatement.setInt(1, TablaDl);
+            preparedStatement.executeUpdate();
+            System.out.println("Elimino La Tabla");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTabla(ArtistasCL tablaUP, int cs) {
+        try {
+            System.out.println("Entro a Acturalizar");
+            PreparedStatement preparedStatement = connection
+                    .prepareStatement("update ArtistasBD set Nombre=? where ID_Artistas=" + cs);
+            // Parameters start with 1
+            preparedStatement.setString(1, tablaUP.getNombre());
+            preparedStatement.executeUpdate();
+            System.out.println("Actualizo La Tabla");
         } catch (SQLException e) {
             e.printStackTrace();
         }

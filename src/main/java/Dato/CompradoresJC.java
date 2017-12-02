@@ -10,6 +10,7 @@ package Dato;
  * @author camilo
  */
 public class CompradoresJC {
+
     private int ID_Compradores;
     private String nombre;
 
@@ -31,5 +32,5 @@ public class CompradoresJC {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

@@ -10,10 +10,11 @@ package Dato;
  * @author camilo
  */
 public class CompraJc {
-    private int ID_Compra ;
-private int ID_CompradorFK ;
-private int ID_GaleriaFK;
-private int ID_MedioPagoFK ;
+
+    private int ID_Compra;
+    private int ID_CompradorFK;
+    private int ID_GaleriaFK;
+    private int ID_MedioPagoFK;
 
     public CompraJc() {
     }
@@ -50,5 +51,4 @@ private int ID_MedioPagoFK ;
         this.ID_MedioPagoFK = ID_MedioPagoFK;
     }
 
-    
 }

@@ -10,8 +10,9 @@ package Dato;
  * @author camilo
  */
 public class MedioPagoJc {
-    private int ID_Medio ;
-    private String nombre ;
+
+    private int ID_Medio;
+    private String nombre;
 
     public MedioPagoJc() {
     }
@@ -31,5 +32,5 @@ public class MedioPagoJc {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

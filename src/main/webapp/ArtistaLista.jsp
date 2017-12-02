@@ -52,7 +52,7 @@
                                     for (ArtistasCL artista : newArtista) {
                             %>
                             <tr>
-                                <td><%=artista.getId()%></td>
+                                <td><%=artista.ge()%></td>
                                 <td><%=artista.getNombre()%></td>
                                 <td><a href="ArtistaController?action=edit&ClienteID=<%=artista.getId() %>">Aatualizar</a></td>
                                 <td><a href="ArtistaController?action=delete&ClienteID=<%=artista.getId() %>">Eliminar</a></td>

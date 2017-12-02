@@ -10,12 +10,13 @@ package Dato;
  * @author camilo
  */
 public class GaleriaJc {
-   private int ID_Galeria;
-private int ID_ArtistaFK;
-private String nombre;
-private String estilo;
-private String tecnica;
-private int Valor;
+
+    private int ID_Galeria;
+    private int ID_ArtistaFK;
+    private String nombre;
+    private String estilo;
+    private String tecnica;
+    private int Valor;
 
     public GaleriaJc() {
     }

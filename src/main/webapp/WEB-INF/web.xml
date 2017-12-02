@@ -22,6 +22,13 @@
         <url-pattern>/ArtistaController</url-pattern>
     </servlet-mapping>
     
-     
+    <servlet-mapping>
+        <servlet-name>ColumnaController</servlet-name>
+        <url-pattern>/ColumnaController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CompraControlador</servlet-name>
+        <url-pattern>/CompraControlador</url-pattern>
+    </servlet-mapping>
      
 </web-app>
