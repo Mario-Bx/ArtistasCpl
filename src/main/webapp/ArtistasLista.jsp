@@ -1,21 +1,22 @@
 <%-- 
-    Document   : ArtistaLista
-    Created on : 15/11/2017, 10:26:25 AM
-    Author     : LabingXEON
+    Document   : ArtistasLista
+    Created on : 2/12/2017, 11:07:12 PM
+    Author     : Mario-Bx
 --%>
 
-<%@page import="Dato.ArtistasCL"%>
 <%@page import="java.util.List"%>
+<%@page import="Dato.ArtistasCL"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Artistas</title>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum.scale=1.0">
         <link rel="stylesheet" href="ui/Css/MenuDesplegableSub.css">
         <link rel="stylesheet" href="ui/Css/Etilo Fomulario.css">
     </head>
+
     <body>
         <div id="Centrar">
             <div id="Telon" align="center">
@@ -26,17 +27,17 @@
                         <nav class="MenuCss">
                             <ul>
                                 <li><a href="index.jsp"><span class="uno"><img class="icon" src="ui/Imagenes/icon1.png" /></span>Inicio</a></li>
-                                <li><a href="SquemaIndex.jsp"><span class="dos"><img class="icon" src="ui/Imagenes/Esquema.png" /> </span>Esquemas</a></li>
-                                <li><a href="TablaIndex.jsp"><span class="tres"><img class="icon" src="ui/Imagenes/Database-Table-icon.png" /> </span>Tablas</a></li>
-                                <li><a href="ColumnaIndex.jsp"><span class="cuatro"><img class="icon" src="ui/Imagenes/Columna.png" /> </span>Columnas</a></li>
+                                <li><a href="ArtistaIndex.jsp"><span class="uno"><img class="icon" src="ui/Imagenes/icon1.png" /></span>Artistas</a></li>
+                                <li><a href="CompradoresIndex.jsp"><span class="dos"><img class="icon" src="ui/Imagenes/Esquema.png" /> </span>Compradores</a></li>
+                                <li><a href="GaleriaIndex.jsp"><span class="tres"><img class="icon" src="ui/Imagenes/Database-Table-icon.png" /> </span>Galeria</a></li>
+                                <li><a href="CompraIndex.jsp"><span class="cuatro"><img class="icon" src="ui/Imagenes/Columna.png" /> </span>Compras</a></li>
                             </ul>
                         </nav>
                     </header>                
                 </div>
 
-
                 <div class="form-style-5">
-                    <a href="ArtistaController?action=incertarAc"><input type="submit" value="Add Artista"/></a>
+                    <a href="ArtistaControl?action=incertarAc"><input type="submit" value="Agregar"/></a>
                     <table border=1>
                         <thead>
                             <tr>
@@ -47,15 +48,15 @@
                         </thead>
                         <tbody>
                             <%
-                                List<ArtistasCL> newArtista = (List<ArtistasCL>) request.getAttribute("ArtistasJSP");
-                                if (newArtista != null) {
-                                    for (ArtistasCL artista : newArtista) {
+                                List<ArtistasCL> newListaO = (List<ArtistasCL>) request.getAttribute("ListaJsp");
+                                if (newListaO != null) {
+                                    for (ArtistasCL objeto : newListaO) {
                             %>
                             <tr>
-                                <td><%=artista.ge()%></td>
-                                <td><%=artista.getNombre()%></td>
-                                <td><a href="ArtistaController?action=edit&ClienteID=<%=artista.getId() %>">Aatualizar</a></td>
-                                <td><a href="ArtistaController?action=delete&ClienteID=<%=artista.getId() %>">Eliminar</a></td>
+                                <td><%=objeto.getId()%></td>
+                                <td><%=objeto.getNombre()%></td>
+                                <td><a href="ArtistaControl?action=edit&JspAcID=<%=objeto.getId()%>">Aatualizar</a></td>
+                                <td><a href="ArtistaControl?action=delete&JspAcID=<%=objeto.getId()%>">Eliminar</a></td>
                             </tr>
 
                             <%
@@ -75,3 +76,4 @@
 
     </body>
 </html>
+

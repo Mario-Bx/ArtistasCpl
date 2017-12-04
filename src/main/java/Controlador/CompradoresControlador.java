@@ -5,8 +5,8 @@
  */
 package Controlador;
 
-import DAO.CompraDao;
-import Dato.CompraJc;
+import DAO.CompradoresDao;
+import Dato.CompradoresJC;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import javax.servlet.RequestDispatcher;
@@ -19,16 +19,16 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mario-Bx
  */
-public class CompraControlador extends HttpServlet {
+public class CompradoresControlador extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/Compra.jsp";
-    private static String LIST_USER = "/CompraLista.jsp";
-    private CompraDao dao;
+    private static String INSERT_OR_EDIT = "/Compradores.jsp";
+    private static String LIST_USER = "/CompradoresLista.jsp";
+    private CompradoresDao dao;
 
-    public CompraControlador() throws URISyntaxException {
+    public CompradoresControlador() throws URISyntaxException {
         super();
-        dao = new CompraDao();
+        dao = new CompradoresDao();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,11 +45,8 @@ public class CompraControlador extends HttpServlet {
             System.out.println(" Realizo la accion de eliminar");
         } else if (action.equalsIgnoreCase("edit")) {
             forward = INSERT_OR_EDIT;
-            request.setAttribute("compradorJsp", dao.getAllComprador());
-            request.setAttribute("galeriaJsp", dao.getAllGaleria());
-            request.setAttribute("pagoJsp", dao.getAllPago());
             int variableID = Integer.parseInt(request.getParameter("JspAcID"));
-            CompraJc tabla = dao.getById(variableID);
+            CompradoresJC tabla = dao.getById(variableID);
             ///primero va la tabla de sql
             request.setAttribute("JspED", tabla);
         } else if (action.equalsIgnoreCase("ListarDatosJspAC")) {
@@ -57,9 +54,6 @@ public class CompraControlador extends HttpServlet {
             request.setAttribute("ListaJsp", dao.getAll());
         } else {
             forward = INSERT_OR_EDIT;
-            request.setAttribute("compradorJsp", dao.getAllComprador());
-            request.setAttribute("galeriaJsp", dao.getAllGaleria());
-            request.setAttribute("pagoJsp", dao.getAllPago());
         }
 
         RequestDispatcher view = request.getRequestDispatcher(forward);
@@ -67,17 +61,15 @@ public class CompraControlador extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CompraJc newObjeto = new CompraJc();
-        newObjeto.setID_CompradorFK(Integer.parseInt(request.getParameter("FkCompradorHtml")));
-        newObjeto.setID_GaleriaFK(Integer.parseInt(request.getParameter("FkGaleriaHtml")));
-        newObjeto.setID_MedioPagoFK(Integer.parseInt(request.getParameter("FkMedioHtml")));
+        CompradoresJC newObjeto = new CompradoresJC();
+        newObjeto.setNombre(request.getParameter("NombreHtml"));
 
         String variableID = request.getParameter("IdBDHtml");
 
         if (variableID == null || variableID.isEmpty()) {
             dao.add(newObjeto);
         } else {
-            newObjeto.setID_Compra(Integer.parseInt(variableID));
+            newObjeto.setID_Compradores(Integer.parseInt(variableID));
             int variableID2 = Integer.parseInt(request.getParameter("IdBDHtml"));
             dao.update(newObjeto, variableID2);
         }
@@ -85,4 +77,5 @@ public class CompraControlador extends HttpServlet {
         request.setAttribute("ListaJsp", dao.getAll());
         view.forward(request, response);
     }
+
 }

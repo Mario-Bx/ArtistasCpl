@@ -13,22 +13,36 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
     
-    <servlet>
-        <servlet-name>ArtistaController</servlet-name>
-        <servlet-class>Controlador.ArtistaController</servlet-class>
+   <servlet>
+        <servlet-name>CompraControlador</servlet-name>
+        <servlet-class>Controlador.CompraControlador</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>ArtistaController</servlet-name>
-        <url-pattern>/ArtistaController</url-pattern>
-    </servlet-mapping>
-    
-    <servlet-mapping>
-        <servlet-name>ColumnaController</servlet-name>
-        <url-pattern>/ColumnaController</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>CompradoresControlador</servlet-name>
+        <servlet-class>Controlador.CompradoresControlador</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GaleriaControl</servlet-name>
+        <servlet-class>Controlador.GaleriaControl</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ArtistaControl</servlet-name>
+        <servlet-class>Controlador.ArtistaControl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CompraControlador</servlet-name>
         <url-pattern>/CompraControlador</url-pattern>
     </servlet-mapping>
-     
+    <servlet-mapping>
+        <servlet-name>CompradoresControlador</servlet-name>
+        <url-pattern>/CompradoresControlador</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GaleriaControl</servlet-name>
+        <url-pattern>/GaleriaControl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ArtistaControl</servlet-name>
+        <url-pattern>/ArtistaControl</url-pattern>
+    </servlet-mapping>
 </web-app>

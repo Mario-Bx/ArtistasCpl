@@ -8,6 +8,7 @@ package DAO;
 import Dato.ArtistasCL;
 import Dato.GaleriaJc;
 import Servicios.Conexion;
+import Servicios.DbUtil;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -68,7 +69,7 @@ public class GaleriaDao {
             System.out.println("Entro a Acturalizar");
             //se declara la consulta de Actualizar en la respectiva tabla
             PreparedStatement preparedStatement = connection
-                    .prepareStatement("update GaleriaBD set ID_ArtistaFK=?, nombre=?, estilo=?, tecnica=?, Valor where ID_Galeria=" + cs);
+                    .prepareStatement("update GaleriaBD set ID_ArtistaFK=?, nombre=?, estilo=?, tecnica=?, Valor=? where ID_Galeria=" + cs);
             ///Cada "?" lleva su indice consecutivo
             preparedStatement.setInt(1, tablaUP.getID_ArtistaFK());
             preparedStatement.setString(2, tablaUP.getNombre());
@@ -92,9 +93,9 @@ public class GaleriaDao {
             while (rs.next()) {
                 GaleriaJc tablaLI = new GaleriaJc();
                 tablaLI.setID_Galeria(rs.getInt("ID_Galeria"));
-                tablaLI.setNombre(rs.getString("ID_ArtistaFK"));
-                tablaLI.setEstilo(rs.getString("nombre"));
-                tablaLI.setTecnica(rs.getString("estilo"));
+                tablaLI.setID_ArtistaFK(rs.getInt("ID_ArtistaFK"));
+                tablaLI.setNombre(rs.getString("nombre"));
+                tablaLI.setEstilo(rs.getString("estilo"));
                 tablaLI.setTecnica(rs.getString("tecnica"));
                 tablaLI.setValor(rs.getInt("Valor"));
                 tablaLista.add(tablaLI);
@@ -116,9 +117,9 @@ public class GaleriaDao {
 
             if (rs.next()) {
                 tabla.setID_Galeria(rs.getInt("ID_Galeria"));
-                tabla.setNombre(rs.getString("ID_ArtistaFK"));
-                tabla.setEstilo(rs.getString("nombre"));
-                tabla.setTecnica(rs.getString("estilo"));
+                tabla.setID_ArtistaFK(rs.getInt("ID_ArtistaFK"));
+                tabla.setNombre(rs.getString("nombre"));
+                tabla.setEstilo(rs.getString("estilo"));
                 tabla.setTecnica(rs.getString("tecnica"));
                 tabla.setValor(rs.getInt("Valor"));
             }

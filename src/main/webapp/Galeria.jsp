@@ -1,15 +1,16 @@
 <%-- 
-    Document   : Artista
-    Created on : 2/12/2017, 11:11:09 PM
+    Document   : Galeria
+    Created on : 2/12/2017, 10:27:38 PM
     Author     : Mario-Bx
 --%>
 
-<%@page import="Dato.ArtistasCL"%>
+<%@page import="Dato.GaleriaJc"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>EDA Artista</title>
+        <title>AED Galeria</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum.scale=1.0">
         <link rel="stylesheet" href="ui/Css/MenuDesplegableSub.css">
@@ -44,13 +45,21 @@
 
                 <div class="form-style-5">
                     <%
-                        ArtistasCL newObjetoIC = (ArtistasCL) request.getAttribute("frmAddSquema");
+                        GaleriaJc newObjetoIC = (GaleriaJc) request.getAttribute("frmAddSquema");
                         if (request.getParameter("action").equals("incertarAc")) {
                     %>
-                    <form method="POST" action='ArtistaControl' name="frmAddUser">
-                        Artista ID : <input type="text" readonly="readonly" name="IdBDHtml"/>
+                    <form method="POST" action='GaleriaControl' name="frmAddUser">
+                        Galeria ID : <input type="text" readonly="readonly" name="IdBDHtml"/>
                         <br /> 
-                        Nombre : <input type="text" name="NombreHtml"/>
+                        ID Artista : <input type="text" name="FkArtistasrHtml"/>
+                        <br />
+                        Nombre :<input type="text" name="NombreHtml"/>
+                        <br />
+                        Estilo :<input type="text" name="EstiloHtml"/>
+                        <br />
+                        Tecnica :<input type="text" name="TecnicaHtml"/>
+                        <br />
+                        Valor :<input type="text" name="ValorHtml"/>
                         <br />
                         <input type="submit" value="Insertar" />
                     </form>
@@ -58,12 +67,20 @@
 
                     <%
                     } else if ((request.getParameter("action").equals("edit"))) {
-                        ArtistasCL newObjetoEd = (ArtistasCL) request.getAttribute("JspED");
+                        GaleriaJc newObjetoEd = (GaleriaJc) request.getAttribute("JspED");
                     %>
-                    <form method="POST" action='ArtistaControl' name="frmAddSquema">
-                        Artista ID : <input type="text" readonly="readonly" name="IdBDHtml" value="<%=newObjetoEd.getId()%>"/>
+                    <form method="POST" action='GaleriaControl' name="frmAddSquema">
+                        Galeria ID : <input type="text" readonly="readonly" name="IdBDHtml" value="<%=newObjetoEd.getID_Galeria()%>"/>
                         <br /> 
+                        ID Artista : <input type="text" name="FkArtistasrHtml" value="<%=newObjetoEd.getID_ArtistaFK()%>"/>
+                        <br />
                         Nombre : <input type="text" name="NombreHtml" value="<%=newObjetoEd.getNombre()%>"/>
+                        <br />
+                        Estilo : <input type="text" name="EstiloHtml" value="<%=newObjetoEd.getEstilo()%>"/>
+                        <br />
+                        Tecnica : <input type="text" name="TecnicaHtml" value="<%=newObjetoEd.getTecnica()%>"/>
+                        <br />
+                        Valor : <input type="text" name="ValorHtml" value="<%=newObjetoEd.getValor()%>"/>
                         <br />
                         <input type="submit" value="Editar" />
                     </form>

@@ -8,7 +8,6 @@ package Controlador;
 import DAO.ArtistaDao;
 import Dato.ArtistasCL;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,16 +17,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author LabingXEON
+ * @author Mario-Bx
  */
-public class ArtistaController extends HttpServlet {
+public class ArtistaControl extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/Artista.jsp";
-    private static String LIST_USER = "/ArtistaLista.jsp";
+    private static String LIST_USER = "/ArtistasLista.jsp";
     private ArtistaDao dao;
 
-    public ArtistaController() throws URISyntaxException {
+    public ArtistaControl() throws URISyntaxException {
         super();
         dao = new ArtistaDao();
     }
@@ -37,21 +36,22 @@ public class ArtistaController extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action.equalsIgnoreCase("delete")) {
-            System.out.println("Entro a la accion eliminar");
-            int clienteId = Integer.parseInt(request.getParameter("ClienteID"));
-//            dao.deleteCliente(clienteId);
+            System.out.println("Entro a la accion");
+            int variableID = Integer.parseInt(request.getParameter("JspAcID"));
+            dao.delete(variableID);
             forward = LIST_USER;
-            ///primero va la tabla de sql
-            request.setAttribute("ClienteBD", dao.getAllArtistas());
+            ///(Parametro jsp),(Metodo Para el Parametro)
+            request.setAttribute("ListaJsp", dao.getAll());
             System.out.println(" Realizo la accion de eliminar");
         } else if (action.equalsIgnoreCase("edit")) {
             forward = INSERT_OR_EDIT;
-            int clienteID = Integer.parseInt(request.getParameter("ClienteID"));
-//            ClienteJc newCliente = dao.getClienteById(clienteID);
-//            request.setAttribute("Cliente", newCliente);
-        } else if (action.equalsIgnoreCase("ListarArtistasAC")) {
+            int variableID = Integer.parseInt(request.getParameter("JspAcID"));
+            ArtistasCL tabla = dao.getById(variableID);
+            ///primero va la tabla de sql
+            request.setAttribute("JspED", tabla);
+        } else if (action.equalsIgnoreCase("ListarDatosJspAC")) {
             forward = LIST_USER;
-            request.setAttribute("ArtistasJSP", dao.getAllArtistas());
+            request.setAttribute("ListaJsp", dao.getAll());
         } else {
             forward = INSERT_OR_EDIT;
         }
@@ -61,21 +61,20 @@ public class ArtistaController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArtistasCL newCliente = new ArtistasCL();
-        newCliente.setNombre(request.getParameter("nombreHtml"));
+        ArtistasCL newObjeto = new ArtistasCL();
+        newObjeto.setNombre(request.getParameter("NombreHtml"));
 
-        String clienteid = request.getParameter("clienteIdHtml");
+        String variableID = request.getParameter("IdBDHtml");
 
-        if (clienteid == null || clienteid.isEmpty()) {
-            dao.addArtista(newCliente);
+        if (variableID == null || variableID.isEmpty()) {
+            dao.add(newObjeto);
         } else {
-            newCliente.setId(Integer.parseInt(clienteid));
-            int clienteId = Integer.parseInt(request.getParameter("clienteIdHtml"));
-//            dao.updateCliente(newCliente, clienteId);
+            newObjeto.setId(Integer.parseInt(variableID));
+            int variableID2 = Integer.parseInt(request.getParameter("IdBDHtml"));
+            dao.update(newObjeto, variableID2);
         }
         RequestDispatcher view = request.getRequestDispatcher(LIST_USER);
-        request.setAttribute("ArtistasJSP", dao.getAllArtistas());
+        request.setAttribute("ListaJsp", dao.getAll());
         view.forward(request, response);
     }
-
 }

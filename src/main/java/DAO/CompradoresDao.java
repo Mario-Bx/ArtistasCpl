@@ -7,6 +7,7 @@ package DAO;
 
 import Dato.CompradoresJC;
 import Servicios.Conexion;
+import Servicios.DbUtil;
 import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

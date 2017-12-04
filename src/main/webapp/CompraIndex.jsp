@@ -1,6 +1,6 @@
 <%-- 
-    Document   : ArtistaIndex
-    Created on : 2/12/2017, 11:06:23 PM
+    Document   : CompraIndex
+    Created on : 2/12/2017, 11:29:21 AM
     Author     : Mario-Bx
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Index</title>
     </head>
     <body>
-        <jsp:forward page="/ArtistaControl?action=ListarDatosJspAC" />
+        <jsp:forward page="/CompraControlador?action=ListarDatosJspAC" />
     </body>
 </html>

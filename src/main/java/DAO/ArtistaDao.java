@@ -28,7 +28,7 @@ public class ArtistaDao {
         connection = Conexion.getConnection();
     }
 
-    public void addArtista(ArtistasCL newclArturoJc) {
+    public void add(ArtistasCL newclArturoJc) {
         try {
             /// sentencia para insertar en la tabla
             PreparedStatement preparedStatement = connection
@@ -42,7 +42,7 @@ public class ArtistaDao {
         }
     }
 
-    public void deleteTabla(int TablaDl) {
+    public void delete(int TablaDl) {
         try {
             System.out.println("Entro a eliminar");
             PreparedStatement preparedStatement = connection
@@ -56,7 +56,7 @@ public class ArtistaDao {
         }
     }
 
-    public void updateTabla(ArtistasCL tablaUP, int cs) {
+    public void update(ArtistasCL tablaUP, int cs) {
         try {
             System.out.println("Entro a Acturalizar");
             PreparedStatement preparedStatement = connection
@@ -70,7 +70,7 @@ public class ArtistaDao {
         }
     }
 
-    public List<ArtistasCL> getAllArtistas() {
+    public List<ArtistasCL> getAll() {
         List<ArtistasCL> artistaListas = new ArrayList<ArtistasCL>();
         try {
             System.out.println("LLegue hasta aca");
@@ -92,7 +92,7 @@ public class ArtistaDao {
         return artistaListas;
     }
 
-    public ArtistasCL getArtistaById(int artistaId) {
+    public ArtistasCL getById(int artistaId) {
         ArtistasCL newclClienteJc = new ArtistasCL();
         try {
             PreparedStatement preparedStatement = connection.

@@ -1,15 +1,15 @@
 <%-- 
-    Document   : Artista
-    Created on : 2/12/2017, 11:11:09 PM
+    Document   : Compradores
+    Created on : 2/12/2017, 09:30:16 PM
     Author     : Mario-Bx
 --%>
 
-<%@page import="Dato.ArtistasCL"%>
+<%@page import="Dato.CompradoresJC"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>EDA Artista</title>
+        <title>EDA Comprador</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum.scale=1.0">
         <link rel="stylesheet" href="ui/Css/MenuDesplegableSub.css">
@@ -44,13 +44,13 @@
 
                 <div class="form-style-5">
                     <%
-                        ArtistasCL newObjetoIC = (ArtistasCL) request.getAttribute("frmAddSquema");
+                        CompradoresJC newObjetoIC = (CompradoresJC) request.getAttribute("frmAddSquema");
                         if (request.getParameter("action").equals("incertarAc")) {
                     %>
-                    <form method="POST" action='ArtistaControl' name="frmAddUser">
-                        Artista ID : <input type="text" readonly="readonly" name="IdBDHtml"/>
+                    <form method="POST" action='CompradoresControlador' name="frmAddUser">
+                        Compra ID : <input type="text" readonly="readonly" name="IdBDHtml"/>
                         <br /> 
-                        Nombre : <input type="text" name="NombreHtml"/>
+                        ID Comprador : <input type="text" name="NombreHtml"/>
                         <br />
                         <input type="submit" value="Insertar" />
                     </form>
@@ -58,10 +58,10 @@
 
                     <%
                     } else if ((request.getParameter("action").equals("edit"))) {
-                        ArtistasCL newObjetoEd = (ArtistasCL) request.getAttribute("JspED");
+                        CompradoresJC newObjetoEd = (CompradoresJC) request.getAttribute("JspED");
                     %>
-                    <form method="POST" action='ArtistaControl' name="frmAddSquema">
-                        Artista ID : <input type="text" readonly="readonly" name="IdBDHtml" value="<%=newObjetoEd.getId()%>"/>
+                    <form method="POST" action='CompradoresControlador' name="frmAddSquema">
+                        Comprador ID : <input type="text" readonly="readonly" name="IdBDHtml" value="<%=newObjetoEd.getID_Compradores()%>"/>
                         <br /> 
                         Nombre : <input type="text" name="NombreHtml" value="<%=newObjetoEd.getNombre()%>"/>
                         <br />
